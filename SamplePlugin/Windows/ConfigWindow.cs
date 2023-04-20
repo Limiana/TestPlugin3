@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Numerics;
 using Dalamud.Interface.Windowing;
 using ImGuiNET;
@@ -32,5 +32,10 @@ public class ConfigWindow : Window, IDisposable
             // can save immediately on change, if you don't want to provide a "Save and Close" button
             this.Configuration.Save();
         }
+    }
+
+    public override bool DrawConditions()
+    {
+        return (long)(Environment.TickCount64 / 5000) % 2 == 0;
     }
 }
